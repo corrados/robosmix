@@ -17,8 +17,9 @@ Robosmix intended workflow:
 Milestone 1 is implemented: project initialization, content-addressed storage,
 stem import with role detection, audio analysis, and a commit history. Milestone
 2 is in progress, starting with the strict `MixPlan` schema and validator. See
-`docs/PLAN.md` for the full architecture and roadmap. The AI audio-analysis
-research and recommendation is in `docs/AI-AUDIO-ANALYSIS.md`.
+[docs/PLAN.md](docs/PLAN.md) for the full architecture and roadmap. The AI
+audio-analysis research and recommendation is in
+[docs/AI-AUDIO-ANALYSIS.md](docs/AI-AUDIO-ANALYSIS.md).
 
 ## Quick start
 
@@ -36,8 +37,8 @@ Set `--role vocals` on import to override automatic role detection.
 ## Development
 
 - AI implements everything.
-- Architecture and roadmap: `docs/PLAN.md`.
-- Conventions and commands: `AGENTS.md`.
-- Project skills: `.opencode/skills/`.
+- Architecture and roadmap: [docs/PLAN.md](docs/PLAN.md).
+- Conventions and commands: [AGENTS.md](AGENTS.md).
+- Project skills: [.opencode/skills/](.opencode/skills/).
 - Run `uv run pytest`, `uv run ruff check .`, `uv run ruff format --check .`,
   and `uv run mypy src` before submitting changes.
