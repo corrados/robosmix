@@ -16,6 +16,8 @@ are in `docs/AI-AUDIO-ANALYSIS.md`.
 - Prefer deterministic, testable code over clever code.
 - Update this file and the relevant skill when commands, layout, or conventions
   change.
+- When a task is finished, commit all intended changes and push to the
+  configured upstream. Leave the working tree clean.
 
 ## Commands
 
@@ -52,6 +54,7 @@ Load the relevant skill with the `skill` tool before working in these areas:
 | `daw-integration` | Ardour OSC/Lua, session import/export, render adapter |
 | `ai-mix-agent` | LLM orchestration, prompts, tools, feedback interpretation |
 | `mix-versioning` | Commit DAG, branches, artifacts, feedback, migrations |
+| `git-workflow` | Finishing every task: checks, staging, commit, push |
 
 ## Definition of done
 
@@ -59,3 +62,4 @@ Load the relevant skill with the `skill` tool before working in these areas:
 - `ruff` and `mypy` pass.
 - `docs/PLAN.md` still describes the implementation.
 - No unrelated files or formatting churn.
+- Intended changes are committed and pushed; `git status` is clean.
