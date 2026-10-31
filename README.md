@@ -12,8 +12,30 @@ Robosmix intended workflow:
 - If special treatment of audio tracks are required, this should also be added.
 - AI remote controls a DAW and creates multiple final versions of the song like "Powerful mix", "High dynamic", etc. where the band can select one flavor. Based on this, the band gives feedback which is then incorporated into the final version. This repeats until the band is happy. Important: It must be possible to go back to each iteration point and start a different path from that.
 
+## Status
+
+Milestone 1 is implemented: project initialization, content-addressed storage,
+stem import with role detection, audio analysis, and a commit history. See
+`docs/PLAN.md` for the full architecture and roadmap.
+
+## Quick start
+
+```bash
+uv sync
+uv run robosmix init "My Song" --path sessions/my-song
+uv run robosmix import stems/*.wav --project sessions/my-song
+uv run robosmix analyze --project sessions/my-song
+uv run robosmix status --project sessions/my-song
+uv run robosmix history --project sessions/my-song
+```
+
+Set `--role vocals` on import to override automatic role detection.
+
 ## Development
 
 - AI implements everything.
-- First, a good plan has to be created by the AI for this project.
-- Project skills need to be defined.
+- Architecture and roadmap: `docs/PLAN.md`.
+- Conventions and commands: `AGENTS.md`.
+- Project skills: `.opencode/skills/`.
+- Run `uv run pytest`, `uv run ruff check .`, `uv run ruff format --check .`,
+  and `uv run mypy src` before submitting changes.

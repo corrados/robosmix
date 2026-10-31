@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/
+dist/
+
+# Tooling caches
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Robosmix project data and rendered deliverables
+.robosmix/
+*.wav
+*.aif
+*.aiff
+*.flac
+*.mp3
