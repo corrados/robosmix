@@ -2,7 +2,8 @@
 
 Robosmix turns multitrack recordings into AI-assisted mixes and masters, with
 branchable history and a feedback loop. Start with `README.md` and
-`docs/PLAN.md`.
+`docs/PLAN.md`. AI audio-analysis evidence and the recommended hybrid approach
+are in `docs/AI-AUDIO-ANALYSIS.md`.
 
 ## Working agreements
 

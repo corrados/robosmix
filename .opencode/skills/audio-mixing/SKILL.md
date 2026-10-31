@@ -34,12 +34,16 @@ Validate these before rendering. Reject, do not clamp silently.
 
 - Track gain: -24 to +12 dB.
 - Pan: -1.0 (hard left) to +1.0 (hard right); center is 0.0.
-- High-pass: 20 to 400 Hz, 12 or 24 dB/oct.
-- EQ boost/cut: -12 to +12 dB; prefer cuts over broad boosts.
-- Compressor ratio: 1:1 to 10:1; attack 1 to 100 ms; release 20 to 1000 ms.
+- High-pass: 20 to 400 Hz, 12 or 24 dB/oct; use `null` to disable.
+- EQ: frequency 20 Hz to 20 kHz, boost/cut -12 to +12 dB, Q 0.1 to 10,
+  at most 8 bands per track or master; prefer cuts over broad boosts.
+- Compressor threshold: -60 to 0 dB; ratio 1:1 to 10:1; attack 1 to 100 ms;
+  release 20 to 1000 ms.
 - Saturation: 0.0 to 1.0 drive, compensate output gain.
 - Reverb send: 0.0 to 0.5.
-- Limiter ceiling: never above -0.1 dBTP; default -1.0 dBTP.
+- Master target: -40 to -5 LUFS integrated, true peak -3.0 to -0.1 dBTP.
+- Limiter ceiling: -12.0 to -0.1 dBTP; default -1.0 dBTP; never above the
+  target true peak.
 - Stereo width: 0.0 to 2.0, with mono-compatibility checks.
 
 ## Mixing heuristics

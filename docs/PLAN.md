@@ -1,6 +1,6 @@
 # Robosmix Project Plan
 
-Status: draft v0.2 (M1 complete)
+Status: draft v0.3 (M2 in progress)
 Date: 2026-10-31
 Owner: AI maintainers
 
@@ -116,6 +116,7 @@ that the engine can execute deterministically.
 ```json
 {
   "schema_version": 1,
+  "flavor": "powerful",
   "target": {
     "genre": "rock",
     "reference_recipe": "dominant guitars and fat drums",
@@ -123,7 +124,7 @@ that the engine can execute deterministically.
     "true_peak_db": -1.0
   },
   "tracks": {
-    "drums": {
+    "track-id": {
       "gain_db": 0.0,
       "pan": 0.0,
       "high_pass_hz": 30,
@@ -138,12 +139,15 @@ that the engine can execute deterministically.
     "compressor": null,
     "limiter": {"ceiling_db": -1.0},
     "stereo_width": 1.0
-  }
+  },
+  "rationale": "Keep the drums forward and the guitars controlled."
 }
 ```
 
 Rules:
 
+- `tracks` is keyed by stable `Track.id`; omitted tracks pass through unchanged.
+  Role-based groups or buses can be added later without changing the plan shape.
 - Every parameter has a documented safe range; validation rejects extreme
   values before rendering.
 - Plans are serializable, diffable, and human-readable.
@@ -182,6 +186,13 @@ Guardrails:
 - Provide a deterministic heuristic planner as an offline fallback and as a
   baseline for evaluation.
 - Log model/provider/prompt version with every commit.
+
+Research decision: the default agent consumes a structured `AnalysisReport`, not
+raw audio. Audio-capable models are optional second opinions behind explicit
+configuration, because current audio LLM inputs are lossy and are not reliable
+for parameter-level mixing. Reference-guided constrained optimization and a
+deterministic baseline come first; a learned critic requires a suitable
+evaluation set. Evidence and sources are in `docs/AI-AUDIO-ANALYSIS.md`.
 
 ## 7. Audio targets and quality
 
@@ -252,7 +263,7 @@ robosmix/
 - Implemented: `robosmix` package with `init`, `import`, `analyze`, `status`,
   `history`, and `version`; 33 tests cover the domain, store, analysis, and CLI.
 
-### M2 - Deterministic mixing and rendering
+### M2 - Deterministic mixing and rendering (in progress)
 
 - MixPlan schema and validator.
 - DSP chain with gain, pan, high-pass, EQ, compression, saturation, reverb send.
@@ -260,6 +271,8 @@ robosmix/
 - WAV/FLAC export; objective report per render.
 - Acceptance: a fixture plan renders without a DAW; loudness and true-peak
   targets are met; golden metrics stay within tolerance.
+- Implemented: strict `MixPlan` schema and validator with documented safe
+  ranges; covered by unit tests.
 
 ### M3 - DAW adapter
 
@@ -333,13 +346,13 @@ Confirmed:
 
 Still open:
 
-1. Choose the default LLM provider and whether a fully local model is required.
+1. Choose the default LLM provider and whether a fully local model is required
+   (trade-offs in `docs/AI-AUDIO-ANALYSIS.md`).
 2. Agree on the initial plugin set.
 3. Confirm when the web UI enters the schedule relative to the AI workflow.
 
 ## 14. Immediate next steps
 
-1. Implement the `MixPlan` schema and validator (M2).
-2. Build the deterministic DSP chain and flavor presets.
-3. Add mastering, loudness normalization, and WAV/FLAC export.
-4. Add golden-metric tests for rendering.
+1. Build the deterministic DSP chain and flavor presets.
+2. Add mastering, loudness normalization, and WAV/FLAC export.
+3. Add golden-metric tests for rendering.

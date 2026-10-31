@@ -15,8 +15,10 @@ Robosmix intended workflow:
 ## Status
 
 Milestone 1 is implemented: project initialization, content-addressed storage,
-stem import with role detection, audio analysis, and a commit history. See
-`docs/PLAN.md` for the full architecture and roadmap.
+stem import with role detection, audio analysis, and a commit history. Milestone
+2 is in progress, starting with the strict `MixPlan` schema and validator. See
+`docs/PLAN.md` for the full architecture and roadmap. The AI audio-analysis
+research and recommendation is in `docs/AI-AUDIO-ANALYSIS.md`.
 
 ## Quick start
 

@@ -20,3 +20,7 @@ class TrackImportError(RobosmixError):
 
 class RoleError(RobosmixError):
     """Raised when a track role is unknown."""
+
+
+class PlanValidationError(RobosmixError):
+    """Raised when a mix plan is malformed or outside safe limits."""
